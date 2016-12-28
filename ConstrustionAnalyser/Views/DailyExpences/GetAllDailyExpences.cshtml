@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ConstrustionAnalyser.Models.DailyExpences>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Expences Amount
+        </th>
+        <th>
+            Expence Description
+        </th>
+        <th>
+            Expence Date
+        </th>
+        <th>
+            Remark
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.expencesAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.expenceDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.expenceDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.remark)
+            </td>
+            <td>
+                <input type="button" value="Create" onclick="location.href='@Url.Action("Edit", "DailyExpences",item.DailyExpencesId,"http")'" />
+                    @Html.ActionLink("Edit", "Edit", new { id = item.DailyExpencesId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.DailyExpencesId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.DailyExpencesId })
+                    @*@Html("Edit", "Edit", new { id = item.DailyExpencesId }) |*@>
+</td>
+        </tr>
+    }
+
+</table>
