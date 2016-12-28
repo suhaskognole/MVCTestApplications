@@ -13,6 +13,14 @@ namespace ConstrustionAnalyser
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            
+
+            routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            );
+
             routes.MapRoute(
                name: "Blank",
                url: "",
@@ -21,15 +29,9 @@ namespace ConstrustionAnalyser
 
             // Show a 404 error page for anything else.
             routes.MapRoute(
-                 name: "Error", 
-                 url:"{*url}",
+                 name: "Error",
+                 url: "{*url}",
                 defaults: new { controller = "Error", action = "404" }
-            );
-
-            routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
